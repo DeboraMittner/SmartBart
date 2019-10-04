@@ -15,7 +15,8 @@ class CocktailCard extends Component {
      super(props);
      this.getIngredients = this.getIngredients.bind(this);
      this.getOrderDialog = this.getOrderDialog.bind(this);
-     
+     this.closeDialog = this.closeDialog.bind(this);
+
      this.state = {visible: false}
      
  }
@@ -32,6 +33,9 @@ class CocktailCard extends Component {
 getOrderDialog(){
  this.setState({visible: true});
  
+}
+closeDialog(){
+  this.setState({visible: false});
 }
 
   render() {
@@ -63,7 +67,7 @@ getOrderDialog(){
       </Button>
         </CardActions>
       </Card>
-      <OrderDialog sichtbar={visible}/>
+      <OrderDialog id={this.props.content.id} sichtbar={visible} closeDialog={this.closeDialog}/>
     </div>
     );
   }
