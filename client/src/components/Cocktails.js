@@ -30,19 +30,20 @@ closeDialog(){
 
     const visible = this.state.visible;
 
-    return (
-        <div>
+    return ( 
+        <div> 
          {Data.map((cocktail, index) =>{
 
              return <CocktailCard content={cocktail} />
          }
          )
         
-        }     
+        }   
       <Fab color="primary" aria-label="add" >
        <AddIcon onClick={this.getNewCocktailDialog} />
       </Fab>
       <NewCocktailDialog sichtbar={visible} closeNewCocktailDialog={this.closeDialog} />
+     
       </div>
     );
   }

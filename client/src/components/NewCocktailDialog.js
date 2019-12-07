@@ -13,11 +13,11 @@ function sendRequest(ratio, id){
         id:id
     }
     console.log(param);
-    axios.get('http://localhost:3000/', param)
-    .then(response => console.log(response))
+    //axios.get('http://localhost:3000/', param)
+    //.then(response => console.log(response))
 }
 
-export default function OrderDialog(props) {
+export default function NewCocktailDialog(props) {
 
   
     return (

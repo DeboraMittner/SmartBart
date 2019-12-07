@@ -1,0 +1,32 @@
+[
+  {
+    "pump": 0,
+    "name": "Coke",
+    "alcohol": false
+  },
+  {
+    "pump": 1,
+    "name": "Coke",
+    "alcohol": true
+  },
+  {
+    "pump": 2,
+    "name": "Coke",
+    "alcohol": true
+  },
+  {
+    "pump": 3,
+    "name": "Coke",
+    "alcohol": false
+  },
+  {
+    "pump": 4,
+    "name": "Coke",
+    "alcohol": false
+  },
+  {
+    "pump": 5,
+    "name": "Coke",
+    "alcohol": true
+  }
+]

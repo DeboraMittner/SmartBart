@@ -15,6 +15,7 @@ var appRouter = function (app) {
 
  app.get("/cocktails/:id", function (req, res) {
     var id = req.params.id;
+    var intensity = req.params.ratio;
 
     //TODO: AUS DEM JSON DEN DRINK MIT DER ID AUSSUCHEN
     //TODO: DEN DRINK DANN AUSGEBEN MIT DER GANZEN RASPI PUMPEN LOGIK
@@ -25,4 +26,4 @@ var appRouter = function (app) {
       }); 
 
 }
-  module.exports = appRouter;
+  module.exports = appRouter, id, intensity;
