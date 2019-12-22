@@ -1,5 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+//CORS HERRE
 var routes = require("./routes/routes.js");
 var app = express();
 

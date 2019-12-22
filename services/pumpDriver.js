@@ -6,8 +6,10 @@ rpio.open(17, rpio.OUTPUT, rpio.LOW);
 rpio.open(17, rpio.OUTPUT, rpio.LOW);
 rpio.open(17, rpio.OUTPUT, rpio.LOW);
 
+
+
 function runPump(pump, duration) {
-  var gpio;
+    var gpio;
   switch (pump) {
     case 0: {
       gpio = 16;
