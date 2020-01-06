@@ -1,34 +1,13 @@
+//var pumpDriver = require('./pumpDriver');
 var cocktails = require('../routes/cocktails.json');
 var pumps = require('./pump.json');
-const MAX_DRINK = 100;
+const MAX_DRINK = 200;
 var value; //value of ingredient
 
 
 
 
-function calculateTime(intensity, pumpArray){
-    var pumpTimeArray = [];
-    for(var i = 0; i < pumpArray.length; i++){
 
-    }
-
-    if(intensity == 1){
-        if(alcohol == true){
-            duration = value * 0.5;
-        }
-        duration = value * 1.5;
-    }
-    else if (intensity == 3){
-        if(alcohol == true){
-            duration = value * 1.5;
-        }
-        duration = value * 0.5;
-    }
-    else{
-        duration = value;
-    }
-    return pumpTimeArray;
-}
 
 function getCocktail(id){
     for(let i = 0; i < cocktails.length; i++){
@@ -51,14 +30,55 @@ function getPumps(cocktail){
     return pumpArray;
 }
 
+function calculateTime(intensity, pumps){
+    var pumpTimeArray = [];
+    var prozent;
+    var totalnoalcohol = 200;
+    var totalalcohol = 0;
+    var difference = 0;
+    pumps.forEach(element => {
+        if(element[0].alcohol == true){
+            totalnoalcohol -= element[1];
+            if(intensity == 1){
+                element[1] *= 0.5;
+            }
+            else if(intensity == 3){
+                element[1] *= 1.5;
+            }
+            totalalcohol += element[1];
+            pumpTimeArray.push(element);
+        }
+    });
+
+    var noalcohol = MAX_DRINK - totalalcohol;
+    difference = Math.abs(totalnoalcohol - noalcohol)
+    pumps.forEach(element => {
+        if(element[0].alcohol == false){
+            prozent = element[1] / totalnoalcohol
+            if(intensity == 1){
+                element[1] = element[1] + (difference * prozent);
+            }
+            else if(intensity == 3){
+                element[1] = element[1] - (difference * prozent);
+            }
+                    
+            pumpTimeArray.push(element);
+        }
+    
+        
+    });
+    
+    return pumpTimeArray;
+}
+   
+
 function makeDrink(id, intensity){
     var cocktail = getCocktail(id);
     var pumps = getPumps(cocktail);
-    console.log(pumps);
-
-    //ingredients holen aus cockteil.json
-    //für jede ingredient calculateTime()
-    //für jede kalkulrietre Zeit pumpDriver.drive(pumpnumber, time)
+    var time = calculateTime(intensity, pumps)
+   /* time.forEach(element => {
+        pumpDriver.runPump(element[0].pump, element[1]);
+    }); */
 }
 
 module.exports = {makeDrink};

@@ -1,23 +1,23 @@
 [
   {
     "pump": 0,
-    "name": "Coke",
+    "name": "sprite",
     "alcohol": false
   },
   {
     "pump": 1,
-    "name": "Coke",
+    "name": "rivella",
     "alcohol": true
   },
   {
     "pump": 2,
-    "name": "Coke",
-    "alcohol": true
+    "name": "coke",
+    "alcohol": false
   },
   {
     "pump": 3,
     "name": "vodka",
-    "alcohol": false
+    "alcohol": true
   },
   {
     "pump": 4,
@@ -26,7 +26,7 @@
   },
   {
     "pump": 5,
-    "name": "Coke",
+    "name": "zitrone",
     "alcohol": true
   }
 ]

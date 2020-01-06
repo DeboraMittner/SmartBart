@@ -26,7 +26,8 @@
     "name": "Vodka Lemon",
     "ingredients": {
         "vodka": 50,
-        "tonic": 150
+        "tonic": 130,
+        "coke" : 20
     }
 }
 ]
