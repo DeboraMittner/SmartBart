@@ -44,4 +44,4 @@ function runPump(pump, duration) {
   rpio.sleep(duration);
   rpio.write(gpio, rpio.LOW);
 }
-module.export = { runPump };
+module.exports = { runPump };

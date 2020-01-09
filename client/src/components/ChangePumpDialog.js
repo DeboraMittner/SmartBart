@@ -6,6 +6,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import SaveIcon from '@material-ui/icons/Save';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import axios from "axios";
+
 
 const drinkTypes = [
   {
@@ -17,6 +19,18 @@ const drinkTypes = [
     label: 'nonalcohol'
   },
 ];
+
+
+function sendRequest(ratio, id) {
+  const params = {
+    ratio: ratio,
+    id: id
+  };
+  console.log(params);
+  axios
+    .get("http://localhost:3000/cocktails/" + params.id, { params })
+    .then(response => console.log(response));
+}
 
 export default function ChangePumpDialog() {
   const [open, setOpen] = React.useState(false);
@@ -38,7 +52,7 @@ export default function ChangePumpDialog() {
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open form dialog
+        Change Pump Settings
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Change Pumps</DialogTitle>
@@ -46,7 +60,7 @@ export default function ChangePumpDialog() {
         <DialogActions>
  
         <form 
-        margin= 'theme.spacing(1)'
+       // margin= 'theme.spacing(1)'
         width= '250'
         noValidate 
         autoComplete="off">

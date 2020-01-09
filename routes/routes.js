@@ -1,7 +1,7 @@
 var mixer = require('../services/mixer');
 var data = require("./cocktails.json");
 var pumps = require('../services/pump');
-//var pumpDriver = require('../services/pumpDriver');
+var pumpDriver = require('../services/pumpDriver');
 
 
 var appRouter = function (app) {
@@ -28,13 +28,23 @@ var appRouter = function (app) {
        
       }); 
 
-      app.get("/cocktails/cleanPumps", function (req, res) {
-        
-        //pumpDriver.runPump();
+      app.get("/cleanPumps", function (req, res) {
+        console.log('huhu');
+        pumpDriver.runPump();
         res.status(200).send('Pumps are cleaning');
 
        
       }); 
+
+      app.get("/cocktails/:id", function (req, res) {
+        var id = req.params.id;
+        var intensity = req.query.ratio;
+        
+        mixer.makeDrink(id, intensity);
+    
+         res.status(200).send(id);
+           
+          }); 
 
 }
   module.exports = appRouter;

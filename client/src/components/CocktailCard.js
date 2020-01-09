@@ -7,10 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import OrderDialog from './OrderDialog';
-import { makeStyles } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
 
-import { position } from '@material-ui/system';
 
 
 class CocktailCard extends Component {
@@ -63,7 +60,6 @@ closeDialog(){
         marginTop: 0,
         display: 'block'
     
-
       }
 
       const divSytyle = {

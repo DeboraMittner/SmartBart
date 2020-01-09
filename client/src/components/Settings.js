@@ -7,7 +7,7 @@ import ChangePumpDialog from './ChangePumpDialog';
 
 import axios from 'axios';
 
-function cleanPumps(){
+function cleanPumps(res){
 
     axios.get('http://localhost:3000/cleanPumps')
     .then(response => console.log(response))
@@ -54,11 +54,6 @@ export default function Settings() {
         }}
       >
         <MenuItem onClick={() => cleanPumps()}>Reinigen</MenuItem>
-        <MenuItem onClick={() => ChangePumpDialog()}>Reinigen</MenuItem>
-
-      
-        
-        
       
       </Menu>
     </div>
