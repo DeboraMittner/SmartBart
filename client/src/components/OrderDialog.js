@@ -24,6 +24,7 @@ export default function OrderDialog(props) {
     <div>
       <Dialog
         open={props.sichtbar}
+        onClose={props.closeDialog}
         
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
@@ -33,13 +34,13 @@ export default function OrderDialog(props) {
           <DialogContentText id="alert-dialog-description">
         
             <DialogActions>
-          <Button  color="primary" onClick={() => sendRequest(1, props.id)}>
+          <Button  color="primary" onClick={() => sendRequest(1, props.id),props.closeDialog}>
             Wenig
           </Button>
-          <Button  color="primary" onClick={() =>sendRequest(2, props.id)}>
+          <Button  color="primary" onClick={() =>sendRequest(2, props.id),props.closeDialog}>
             Mittel
           </Button>
-          <Button  color="primary" onClick={() =>sendRequest(3, props.id)}>
+          <Button  color="primary" onClick={() =>sendRequest(3, props.id),props.closeDialog}>
             Viel
           </Button>        
           <Button  color="primary" onClick={props.closeDialog}>

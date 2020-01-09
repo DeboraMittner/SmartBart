@@ -3,6 +3,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ChangePumpDialog from './ChangePumpDialog';
 
 import axios from 'axios';
 
@@ -53,6 +54,7 @@ export default function Settings() {
         }}
       >
         <MenuItem onClick={() => cleanPumps()}>Reinigen</MenuItem>
+        <MenuItem onClick={() => ChangePumpDialog()}>Reinigen</MenuItem>
 
       
         
