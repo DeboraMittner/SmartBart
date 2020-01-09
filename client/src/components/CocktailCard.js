@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import OrderDialog from './OrderDialog';
 
+import Grid from '@material-ui/core/Grid';
+
 
 
 class CocktailCard extends Component {
@@ -71,12 +73,12 @@ closeDialog(){
 
 
     return (
-      <div style={divSytyle}>
+      <div style={divSytyle} >
   
         <Card style={cardstyle}>
         <CardActionArea>
           <CardMedia
-            image="/static/images/cards/contemplative-reptile.jpg"
+            image="../testfiles/images/smartpic.jpg"
             title="Contemplative Reptile"
             height="140"
           />

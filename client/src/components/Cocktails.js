@@ -29,7 +29,7 @@ class Cocktails extends Component {
 
   render() {
     return (
-      <div>
+      <div marginTop='5px'>
         <Grid container spacing={6}>
           {this.state.cocktails.map((cocktail, index) => {
             return (
