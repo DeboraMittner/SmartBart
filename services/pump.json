@@ -6,7 +6,7 @@
   },
   {
     "pump": 1,
-    "name": "rivella",
+    "name": "rum",
     "alcohol": true
   },
   {
@@ -21,12 +21,12 @@
   },
   {
     "pump": 4,
-    "name": "tonic",
+    "name": "osaft",
     "alcohol": false
   },
   {
     "pump": 5,
-    "name": "rum",
+    "name": "eistee",
     "alcohol": true
   }
 ]

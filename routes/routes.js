@@ -11,8 +11,8 @@ var appRouter = function (app) {
   
   
   app.get("/cocktails", function (req, res) {
-    
-      res.status(200).send(data);
+
+      res.status(200).json(data);
      
     }); 
 
@@ -36,15 +36,13 @@ var appRouter = function (app) {
        
       }); 
 
-      app.get("/cocktails/:id", function (req, res) {
-        var id = req.params.id;
-        var intensity = req.query.ratio;
+      app.get("/pumps", function (req, res) {
         
-        mixer.makeDrink(id, intensity);
-    
-         res.status(200).send(id);
-           
+        res.status(200).json(pumps);
+
           }); 
+
+          
 
 }
   module.exports = appRouter;

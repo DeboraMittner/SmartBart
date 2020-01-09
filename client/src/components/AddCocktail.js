@@ -4,58 +4,67 @@ import {Dialog, DialogActions, DialogTitle, DialogContent } from "@material-ui/c
 import SaveIcon from "@material-ui/icons/Save";
 import { IoMdWine } from "react-icons/io";
 import {FormLabel, FormControl, FormGroup, FormControlLabel} from "@material-ui/core";
+import axios from "axios";
 
 
-export default function AddCocktail() {
-  const [open, setOpen] = React.useState(false);
+class AddCocktail extends Component {
+  constructor(props) {
+    super(props);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+    this.state = { 
+      pumps: [],
+      visible: false, 
+      open: false,
+      value: 30
+    };
+  }
+  
+
+handleClickOpen = () => {
+    this.setState({open: true});
   };
 
-  const handleClose = () => {
-    setOpen(false);
+handleClose = () => {
+  this.setState({open: false});
   };
 
-  const [state, setState] = React.useState({
-    cola: false,
-    sprite: false,
-    wasser: false
-  });
-
-  const handleChange = name => event => {
-    setState({ ...state, [name]: event.target.checked });
+handleChange = name => event => {
+    this.setState({[name]: event.target.checked });
   };
 
-  const { cola, sprite, wasser } = state;
 
-  const [value, setValue] = React.useState(30);
-
-  const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
+handleInputChange = event => {
+    this.setState({value: event.target.value === "" ? "" : Number(event.target.value)});
   };
 
-  const handleInputChange = event => {
-    setValue(event.target.value === "" ? "" : Number(event.target.value));
-  };
-
-  const handleBlur = () => {
-    if (value < 0) {
-      setValue(0);
-    } else if (value > 200) {
-      setValue(200);
+handleBlur = () => {
+    if (this.value < 0) {
+      this.setState({value: 0});
+    } else if (this.value > 200) {
+      this.setState({value: 200});
     }
   };
 
+  componentDidMount(){
+    axios
+    .get("http://localhost:3000/pumps")
+    .then(response => {
+      this.setState({pumps: response.data});
+      console.log(response);
+    });
+  }
+
+  render(){
+
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
        Add Cocktail <IoMdWine />
       </Button>
 
       <Dialog
-        open={open}
-        onClose={handleClose}
+        open={this.state.open}
+        onClose={this.handleClose}
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">New Cocktail</DialogTitle>
@@ -70,24 +79,27 @@ export default function AddCocktail() {
 
               <FormControl component="fieldset" >
                 <FormLabel component="legend">Ingredients</FormLabel>
+               
+                {this.state.pumps.map((pumpen, index) => {
+                  return (
                 <FormGroup>
                   <FormControlLabel
                     control={
                       <Checkbox
-                        checked={cola}
-                        onChange={handleChange("cola")}
-                        value="cola"
+                        //checked={cola}
+                        onChange={this.handleChange(pumpen.name)}
+                        value={pumpen.name}
                       />
                     }
-                    label="Cola"
+                    label={pumpen.name}
                   />
 
                   <Input
                     width="42"
-                    value={value}
+                    value={this.value}
                     margin="dense"
-                    onChange={handleInputChange}
-                    onBlur={handleBlur}
+                    onChange={this.handleInputChange}
+                    onBlur={this.handleBlur}
                     inputProps={{
                       step: 10,
                       min: 0,
@@ -97,11 +109,14 @@ export default function AddCocktail() {
                     }}
                   />
                 </FormGroup>
+                );
+                })}
               </FormControl>
             </form>
 
+
             <Button
-              onClick={handleClose}
+              onClick={this.handleClose}
               variant="contained"
               color="primary"
               size="large"
@@ -115,3 +130,6 @@ export default function AddCocktail() {
     </div>
   );
 }
+}
+
+export default AddCocktail;

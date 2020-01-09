@@ -1,30 +1,28 @@
 import React, { Component } from "react";
 import CocktailCard from "./CocktailCard";
-import Data from "../testfiles/data.json";
 import Grid from "@material-ui/core/Grid";
-//import axios from "axios";
+import axios from "axios";
+import AddCocktail from "./AddCocktail";
 
 class Cocktails extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { visible: false };
+    this.state = { 
+      cocktails: [],
+      visible: false 
+    };
   }
 
-  /*
-  state = {
-    ingri: []
-  };
 
   componentDidMount() {
-    axios.get("http://localhost:3000/cocktails").then(response => {
-      const ingri = response.data;
-      this.setState({ ingri });
-      console.log(response);
-      console.log("Haaaallllooo");
+    axios
+    .get("http://localhost:3000/cocktails")
+    .then(response => {
+      this.setState({cocktails: response.data});
     });
   }
-*/
+
   closeDialog() {
     this.setState({ visible: false });
   }
@@ -33,15 +31,25 @@ class Cocktails extends Component {
     return (
       <div>
         <Grid container spacing={6}>
-          {Data.map((cocktail, index) => {
+          {this.state.cocktails.map((cocktail, index) => {
             return (
               <Grid item xs={6}>
                 <CocktailCard content={cocktail} />
+ 
+                
               </Grid>
+              
             );
+            
           })}
+           
+           
         </Grid>
+
+        
+        <AddCocktail/>
       </div>
+
     );
   }
 }

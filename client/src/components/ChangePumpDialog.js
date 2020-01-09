@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -9,79 +9,89 @@ import MenuItem from '@material-ui/core/MenuItem';
 import axios from "axios";
 
 
-const drinkTypes = [
-  {
-    value: 'alcohol',
-    label: 'alcohol'
-  },
-  {
-    value: 'nonalcohol',
-    label: 'nonalcohol'
-  },
-];
 
+class ChangePumpDialog extends Component {
+  constructor(props){
+    super(props);
+    
+    this.state = {
+      pumps: [],
+      visible: false,
+      open: false,
+      drinkTypes: 'alcohol'
+    }
+  }
+  
 
-function sendRequest(ratio, id) {
-  const params = {
-    ratio: ratio,
-    id: id
-  };
-  console.log(params);
-  axios
-    .get("http://localhost:3000/cocktails/" + params.id, { params })
-    .then(response => console.log(response));
-}
-
-export default function ChangePumpDialog() {
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
+  handleClickOpen = () => {
+    this.setState({open: true});
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  handleClose = () => {
+    this.setState({open: false});
   };
 
-  const [drinkType, setDrinkType] = React.useState('alcohol');
-  const handleChange = (event) => {
-    setDrinkType(event.target.value);
+  handleChange = (event) => {
+    this.setState({drinkTypes: 'nonalcohol'});
   };
 
+componentDidMount(){
+    axios
+    .get("http://localhost:3000/pumps")
+    .then(response => {
+      this.setState({pumps: response.data});
+      console.log('WooooWi');
+      console.log(response);
+    });
+  }
 
+render(){
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
         Change Pump Settings
       </Button>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+      <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Change Pumps</DialogTitle>
         
         <DialogActions>
  
-        <form 
-       // margin= 'theme.spacing(1)'
-        width= '250'
-        noValidate 
-        autoComplete="off">
-         <TextField id="standard-basic" label="Pumpnumber" /> 
-         <TextField id="standard-basic" label="Drinktype" />
-         <TextField
-          select
-          value={drinkType}
-          onChange={handleChange}
-          >
-        {drinkTypes.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
+      {this.state.pumps.map((pumpen, index) => {
+        console.log('pumpen' + pumpen.pump);
+        return (
 
-        </form>
+          
+          <form 
+          width= '250'
+          noValidate 
+          autoComplete="off">
+           <p>{pumpen.pump}</p>
+           <TextField id="standard-basic" label="Drink" />
+           <TextField
+            select
+            value={this.drinkTypes}
+            onChange={this.handleChange}
+            >
+        
+              <MenuItem key={'alcohol'} value={'alcohol'}>
+                alcohol
+              </MenuItem>
+              <MenuItem key={'noalcohol'} value={'noalcohol'}>
+                nonalcohol
+              </MenuItem>
+           
+          </TextField>
+  
+          </form>
+
+        );
+      }
+      
+      )}
+       
 
           <Button 
-          onClick={handleClose} 
+          onClick={this.handleClose} 
           variant="contained"
           color="primary"
           size="large"
@@ -94,3 +104,5 @@ export default function ChangePumpDialog() {
     </div>
   );
 }
+}
+export default ChangePumpDialog;

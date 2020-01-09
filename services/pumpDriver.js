@@ -1,11 +1,11 @@
-var rpio = require("rpio");
+/*var rpio = require("rpio");
 rpio.open(17, rpio.OUTPUT, rpio.LOW);
 rpio.open(17, rpio.OUTPUT, rpio.LOW);
 rpio.open(17, rpio.OUTPUT, rpio.LOW);
 rpio.open(17, rpio.OUTPUT, rpio.LOW);
 rpio.open(17, rpio.OUTPUT, rpio.LOW);
 rpio.open(17, rpio.OUTPUT, rpio.LOW);
-
+*/
 
 
 function runPump(pump, duration) {
@@ -40,8 +40,10 @@ function runPump(pump, duration) {
     }
   }
 
+  /*
   rpio.write(gpio, rpio.HIGH);
   rpio.sleep(duration);
   rpio.write(gpio, rpio.LOW);
+  */
 }
 module.exports = { runPump };
