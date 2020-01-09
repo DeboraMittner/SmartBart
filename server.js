@@ -12,6 +12,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 routes(app);
 
-var server = app.listen(3000, function () {
-    console.log("app running on port.", server.address().port);
+if(process.env.NODE_ENV === 'production') {
+    //Set static folder
+    app.use(express.static('client/build'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
+
+const port = 3000;
+
+app.listen(port, function () {
+    console.log("app running on port." + port);
 });

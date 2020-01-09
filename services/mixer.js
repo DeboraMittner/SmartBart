@@ -1,8 +1,7 @@
 //var pumpDriver = require('./pumpDriver');
-var cocktails = require('../routes/cocktails.json');
+var cocktails = require('./cocktails.json');
 var pumps = require('./pump.json');
-const MAX_DRINK = 200;
-var value; //value of ingredient
+const MAX_DRINK = 300;
 
 function getCocktail(id){
     for(let i = 0; i < cocktails.length; i++){
@@ -29,17 +28,17 @@ function getPumps(cocktail){
 function calculateTime(intensity, pumps){
     var pumpTimeArray = [];
     var prozent;
-    var totalnoalcohol = 200;
+    var totalnoalcohol = 300;
     var totalalcohol = 0;
     var difference = 0;
     pumps.forEach(element => {
         if(element[0].alcohol == true){
             totalnoalcohol -= element[1];
             if(intensity == 1){
-                element[1] *= 0.5;
+                element[1] *= 0.7;
             }
             else if(intensity == 3){
-                element[1] *= 1.5;
+                element[1] *= 1.2;
             }
             totalalcohol += element[1];
             pumpTimeArray.push(element);
