@@ -1,8 +1,8 @@
 [
   {
     "pump": 0,
-    "name": "sprite",
-    "alcohol": false
+    "name": "gin",
+    "alcohol": true
   },
   {
     "pump": 1,
@@ -26,7 +26,7 @@
   },
   {
     "pump": 5,
-    "name": "zitrone",
+    "name": "rum",
     "alcohol": true
   }
 ]

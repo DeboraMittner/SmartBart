@@ -1,5 +1,8 @@
 var mixer = require('../services/mixer');
-var data = require("./cocktails");
+var data = require("./cocktails.json");
+var pumps = require('../services/pump');
+//var pumpDriver = require('../services/pumpDriver');
+
 
 var appRouter = function (app) {
     app.get("/", function(req, res) {
@@ -9,20 +12,27 @@ var appRouter = function (app) {
   
   app.get("/cocktails", function (req, res) {
     
-      res.status(200).json(data);
+      res.status(200).send(data);
      
     }); 
 
  app.get("/cocktails/:id", function (req, res) {
     var id = req.params.id;
     var intensity = req.query.ratio;
-    
-    //TODO: AUS DEM JSON DEN DRINK MIT DER ID AUSSUCHEN
-    //TODO: DEN DRINK DANN AUSGEBEN MIT DER GANZEN RASPI PUMPEN LOGIK
+    console.log(id);
+    console.log(intensity);
     
     mixer.makeDrink(id, intensity);
 
      res.status(200).send(id);
+       
+      }); 
+
+      app.get("/cocktails/cleanPumps", function (req, res) {
+        
+        //pumpDriver.runPump();
+        res.status(200).send('Pumps are cleaning');
+
        
       }); 
 

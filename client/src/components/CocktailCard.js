@@ -7,7 +7,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import OrderDialog from './OrderDialog';
+import { makeStyles } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 
+import { position } from '@material-ui/system';
 
 
 class CocktailCard extends Component {
@@ -38,19 +41,48 @@ closeDialog(){
   this.setState({visible: false});
 }
 
+
+
   render() {
       const cardstyle = {
             maxWidth: 345,
+            height: 250,
       }
+
+      const buttonWrapper = {
+        position: 'absolute',
+        bottom: 5,
+        width: '90%'
+      }
+
+      const buttonSytyle = {
+        
+        marginRight: 'auto',
+        marginLeft: 'auto',
+        marginBottom: 0,
+        marginTop: 0,
+        display: 'block'
+    
+
+      }
+
+      const divSytyle = {
+        position: 'relative',
+
+      }
+
       const visible = this.state.visible;
 
+
     return (
-      <div>
-        <Card style={cardstyle} >
+      <div style={divSytyle}>
+  
+        <Card style={cardstyle}>
         <CardActionArea>
           <CardMedia
             image="/static/images/cards/contemplative-reptile.jpg"
             title="Contemplative Reptile"
+            height="140"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
@@ -62,12 +94,15 @@ closeDialog(){
           </CardContent>
         </CardActionArea>
         <CardActions>
-        <Button variant="contained" color="primary" onClick={this.getOrderDialog}>
+          <div style={buttonWrapper}>
+        <Button style={buttonSytyle} variant="contained" color="primary" onClick={this.getOrderDialog}>
         Order!
       </Button>
+      </div>
         </CardActions>
       </Card>
       <OrderDialog id={this.props.content.id} sichtbar={visible} closeDialog={this.closeDialog}/>
+
     </div>
     );
   }

@@ -4,11 +4,6 @@ var pumps = require('./pump.json');
 const MAX_DRINK = 200;
 var value; //value of ingredient
 
-
-
-
-
-
 function getCocktail(id){
     for(let i = 0; i < cocktails.length; i++){
         if(cocktails[i].id == id ){
@@ -27,6 +22,7 @@ function getPumps(cocktail){
             }
         
     }
+    console.log(pumpArray);
     return pumpArray;
 }
 
@@ -64,18 +60,17 @@ function calculateTime(intensity, pumps){
                     
             pumpTimeArray.push(element);
         }
-    
         
     });
     
     return pumpTimeArray;
 }
    
-
 function makeDrink(id, intensity){
     var cocktail = getCocktail(id);
     var pumps = getPumps(cocktail);
     var time = calculateTime(intensity, pumps)
+    console.log(time);
    /* time.forEach(element => {
         pumpDriver.runPump(element[0].pump, element[1]);
     }); */

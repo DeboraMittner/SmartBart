@@ -8,12 +8,12 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
 function sendRequest(ratio, id){
-    const param = {
-        ratio:ratio,
-        id:id
+    const params = {
+        ratio: ratio,
+        id: id
     }
-    console.log(param);
-    axios.get('http://localhost:3000/', param)
+    console.log(params);
+    axios.get('http://localhost:3000/cocktails/' + params.id, { params })
     .then(response => console.log(response))
 }
 
