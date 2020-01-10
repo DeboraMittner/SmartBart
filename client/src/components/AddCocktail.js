@@ -83,7 +83,6 @@ class AddCocktail extends Component {
     return amounts
 }
 
-
   render() {
 
     return (
@@ -121,6 +120,7 @@ class AddCocktail extends Component {
                       </Select>
                     </FormControl>
                   </div>
+
                 );
               })}
 
