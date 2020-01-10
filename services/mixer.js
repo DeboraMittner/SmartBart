@@ -3,6 +3,7 @@ var pumpDriver = require('./pumpDriver');
 var cocktails = require('./cocktails.json');
 var pumps = require('./pump.json');
 const MAX_DRINK = 300;
+const VOLUME_TIME_RATIO = 0.6;
 
 function getCocktail(id){
     for(let i = 0; i < cocktails.length; i++){
@@ -41,7 +42,7 @@ function calculateTime(intensity, pumps){
             else if(intensity == 3){
                 element[1] *= 1.2;
             }
-            totalalcohol += element[1];
+            totalalcohol += element[1]*VOLUME_TIME_RATIO;
             pumpTimeArray.push(element);
         }
     });
@@ -57,7 +58,7 @@ function calculateTime(intensity, pumps){
             else if(intensity == 3){
                 element[1] = element[1] - (difference * prozent);
             }
-                    
+            element[1] *=  VOLUME_TIME_RATIO;        
             pumpTimeArray.push(element);
         }
         

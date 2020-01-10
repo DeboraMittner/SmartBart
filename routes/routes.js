@@ -84,7 +84,7 @@ var appRouter = function (app) {
   });
 
   app.get("/shutdown", function(req, res) {
-    exec('shutdown now', function (error, stdout, stderr) { console.log(stdout); });
+    exec('sudo shutdown now', function (error, stdout, stderr) { console.log(stdout); });
   });
 
 
