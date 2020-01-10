@@ -3,6 +3,7 @@ import CocktailCard from "./CocktailCard";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import AddCocktail from "./AddCocktail";
+import "../App.css";
 
 class Cocktails extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class Cocktails extends Component {
 
   render() {
     return (
-      <div marginTop='5px'>
+      <div className="cocktails">
         <Grid container spacing={6}>
           {this.state.cocktails.map((cocktail, index) => {
             return (

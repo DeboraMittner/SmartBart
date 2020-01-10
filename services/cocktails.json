@@ -1,33 +1,35 @@
 [{
 	"id": 0,
-    "name": "Rum & Coke",
+    "name": "Cuba Libre",
     "ingredients": {
-            "rum": 50,
-            "coke": 150
+            "rum": 60,
+            "coke": 240
     }
 }, 
 
 {   "id": 1, 
-    "name": "Gin & Tonic",
+    "name": "Long Island",
     "ingredients": {
         "gin": 50,
-        "tonic": 150
+        "Vodka": 50,
+        "Rum": 50,
+        "coke": 150
     }
 }, 
 
-{   "id": 5, 
-    "name": "Coke",
+{   "id": 2, 
+    "name": "Screwdriver",
     "ingredients": {
-        "coke": 200
+        "vodka": 60,
+        "osaft": 240
     }
 }, 
 
 {   "id": 3,
-    "name": "Vodka Lemon",
+    "name": "Firework",
     "ingredients": {
-        "vodka": 50,
-        "tonic": 130,
-        "coke" : 20
+        "vodka": 60,
+        "eistee": 240
     }
 }
 ]
