@@ -9,7 +9,7 @@ import axios from 'axios';
 
 function cleanPumps(res){
 
-    axios.get('http://localhost:3000/cleanPumps')
+    axios.get('http://localhost:4000/cleanPumps')
     .then(response => console.log(response))
 }
 

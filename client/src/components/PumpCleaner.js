@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function cleanPumps(){
     axios
-    .get('http://localhost:3000/cleanPumps')
+    .get('http://localhost:4000/cleanPumps')
     .then(response => console.log(response));
 
 }

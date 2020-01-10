@@ -28,19 +28,41 @@ class ChangePumpDialog extends Component {
   };
 
   save = () => {
-    axios.put('/pumps', {
-
+    axios.put('http://localhost:4000/pumps', {
+      pumps: this.state.pumps
     })
+    .then(response => {
+      console.log(response);
+    });
     this.setState({open: false});
   };
 
-  handleChange = (event) => {
-    this.setState({drinkTypes: 'nonalcohol'});
+  handlePumpNameChange = (pumpId, event) => {
+    var tempPumps = this.state.pumps;
+
+    tempPumps.forEach((pump) => {
+      if(pump.pump === pumpId) {
+        pump.name = event.target.value.toLowerCase();
+      }
+    });
+    this.setState({pump: tempPumps});
+
+  }
+
+  handleAlcoholChange = (pumpId, event) => {
+    var tempPumps = this.state.pumps;
+
+    tempPumps.forEach((pump) => {
+      if(pump.pump === pumpId) {
+        pump.alcohol = !pump.alcohol
+      }
+    });
+    this.setState({pump: tempPumps});
   };
 
 componentDidMount(){
     axios
-    .get("http://localhost:3000/pumps")
+    .get("http://localhost:4000/pumps")
     .then(response => {
       this.setState({pumps: response.data});
       console.log('WooooWi');
@@ -59,30 +81,31 @@ render(){
         
         <DialogActions>
  
-      {this.state.pumps.map((pumpen, index) => {
+      {this.state.pumps.map((pump, index) => {
         return (
           <form 
           width= '250'
           noValidate 
           autoComplete="off"
-          key={pumpen.pump}>
-           <p>{pumpen.pump}</p>
+          key={pump.pump}>
+           <p>{pump.pump + 1}</p>
            <TextField 
             id="standard-basic" 
             label="Drink" 
-            value={pumpen.name}
+            defaultValue={pump.name}
+            onChange={(event) => this.handlePumpNameChange(pump.pump, event)}
             />
            <TextField
             select
-            value={this.state.drinkTypes}
-            onChange={this.handleChange}
+            value={pump.alcohol ? "Alcohol" : "No-Alcohol"}
+            onChange={(event) => this.handleAlcoholChange(pump.pump, event)}
             >
         
-              <MenuItem key={'alcohol'} value={'alcohol'}>
-                alcohol
+              <MenuItem key={'alcohol'} value={'Alcohol'}>
+                Alcohol
               </MenuItem>
-              <MenuItem key={'noalcohol'} value={'noalcohol'}>
-                nonalcohol
+              <MenuItem key={'noalcohol'} value={'No-Alcohol'}>
+                No-Alcohol
               </MenuItem>
            
           </TextField>

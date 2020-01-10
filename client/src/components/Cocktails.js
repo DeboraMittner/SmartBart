@@ -18,7 +18,7 @@ class Cocktails extends Component {
 
   componentDidMount() {
     axios
-    .get("http://localhost:3000/cocktails")
+    .get("http://localhost:4000/cocktails")
     .then(response => {
       this.setState({cocktails: response.data});
     });

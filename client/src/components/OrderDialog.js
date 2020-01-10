@@ -14,7 +14,7 @@ function sendRequest(ratio, id) {
   };
   console.log(params);
   axios
-    .get("http://localhost:3000/cocktails/" + params.id, { params })
+    .get("http://localhost:4000/cocktails/" + params.id, { params })
     .then(response => console.log(response));
 }
 
