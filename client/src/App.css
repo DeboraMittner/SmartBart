@@ -1,0 +1,13 @@
+.App{
+    background-image: url(./testfiles/images/wave.svg);
+    background-size: contain;
+    height: 100vh;
+}
+
+.cocktails{
+    margin-top: 10px;
+}
+.AddButton{
+    display: flex;
+    justify-content: center;
+}

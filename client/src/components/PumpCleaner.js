@@ -12,7 +12,7 @@ function cleanPumps(){
 export default function PumpCleaner() {
 
     return(
- <Button variant="outlined" color="primary" onClick={cleanPumps}>
+ <Button variant="contained" color="primary" onClick={cleanPumps}>
  Clean Pumps
 </Button>
 );

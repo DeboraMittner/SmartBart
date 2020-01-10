@@ -5,6 +5,7 @@ import SaveIcon from "@material-ui/icons/Save";
 import { IoMdWine } from "react-icons/io";
 import {FormLabel, FormControl, FormGroup, FormControlLabel} from "@material-ui/core";
 import axios from "axios";
+import '../App.css';
 
 
 class AddCocktail extends Component {
@@ -58,7 +59,7 @@ handleBlur = () => {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+      <Button className='AddButton' variant="contained" color="primary" onClick={this.handleClickOpen}>
        Add Cocktail <IoMdWine />
       </Button>
 

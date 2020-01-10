@@ -51,7 +51,7 @@ componentDidMount(){
 render(){
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+      <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
         Change Pump Settings
       </Button>
       <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
