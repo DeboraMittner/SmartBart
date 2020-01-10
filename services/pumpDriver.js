@@ -20,6 +20,7 @@ if (process.env.NODE_ENV == 'production') {
 
 
 async function runPump(pump, duration) {
+  console.log('run');
   var gpio;
   switch (pump) {
     case 0: {

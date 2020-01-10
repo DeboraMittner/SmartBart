@@ -72,7 +72,7 @@ function makeDrink(id, intensity){
     var pumps = getPumps(cocktail);
     var time = calculateTime(intensity, pumps)
     console.log(time);
-   time.forEach(element => {
+   time.forEach(async (element) => {
         pumpDriver.runPump(element[0].pump, element[1]);
     }); 
 }
