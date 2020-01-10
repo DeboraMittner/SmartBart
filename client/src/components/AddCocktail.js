@@ -48,7 +48,7 @@ handleBlur = () => {
 
   componentDidMount(){
     axios
-    .get("http://localhost:4000/pumps")
+    .get("http://localhost:3000/pumps")
     .then(response => {
       this.setState({pumps: response.data});
       console.log(response);
@@ -98,7 +98,6 @@ handleBlur = () => {
                   <Input
                     width="42"
                     value={this.value}
-                    marginTop="50px"
                     onChange={this.handleInputChange}
                     onBlur={this.handleBlur}
                     inputProps={{
