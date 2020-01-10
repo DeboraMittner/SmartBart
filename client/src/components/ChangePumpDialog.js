@@ -27,7 +27,10 @@ class ChangePumpDialog extends Component {
     this.setState({open: true});
   };
 
-  handleClose = () => {
+  save = () => {
+    axios.put('/pumps', {
+
+    })
     this.setState({open: false});
   };
 
@@ -57,19 +60,21 @@ render(){
         <DialogActions>
  
       {this.state.pumps.map((pumpen, index) => {
-        console.log('pumpen' + pumpen.pump);
         return (
-
-          
           <form 
           width= '250'
           noValidate 
-          autoComplete="off">
+          autoComplete="off"
+          key={pumpen.pump}>
            <p>{pumpen.pump}</p>
-           <TextField id="standard-basic" label="Drink" />
+           <TextField 
+            id="standard-basic" 
+            label="Drink" 
+            value={pumpen.name}
+            />
            <TextField
             select
-            value={this.drinkTypes}
+            value={this.state.drinkTypes}
             onChange={this.handleChange}
             >
         
@@ -91,7 +96,7 @@ render(){
        
 
           <Button 
-          onClick={this.handleClose} 
+          onClick={this.save} 
           variant="contained"
           color="primary"
           size="large"

@@ -34,7 +34,7 @@ class Cocktails extends Component {
         <Grid container spacing={6}>
           {this.state.cocktails.map((cocktail, index) => {
             return (
-              <Grid item xs={6}>
+              <Grid item xs={6} key={cocktail.id}>
                 <CocktailCard content={cocktail} />
  
                 

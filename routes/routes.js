@@ -42,6 +42,12 @@ var appRouter = function (app) {
 
   });
 
+  app.put("/pumps", function (req, res) {
+    console.log(req.body);
+    res.status(200).send("Pumps are set.");
+
+  });
+
 
 
 }
