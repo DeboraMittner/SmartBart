@@ -1,7 +1,4 @@
-
-if (process.env.NODE_ENV == 'production') {
-    var pumpDriver = require('./pumpDriver');
-}
+var pumpDriver = require('./pumpDriver');
 
 var cocktails = require('./cocktails.json');
 var pumps = require('./pump.json');
