@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import CocktailCard from "./CocktailCard";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
-import AddCocktail from "./AddCocktail";
 import "../App.css";
 
 class Cocktails extends Component {
@@ -48,7 +47,7 @@ class Cocktails extends Component {
         </Grid>
 
         
-        <AddCocktail/>
+        
       </div>
 
     );

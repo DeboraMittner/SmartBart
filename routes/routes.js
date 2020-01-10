@@ -2,8 +2,8 @@ var fs = require('fs');
 var mixer = require('../services/mixer');
 var data = require("../services/cocktails.json");
 var pumps = require('../services/pump.json');
-//var pumps = JSON.parse(fs.readFileSync('./services/pump.json', 'utf-8'));
 var pumpDriver = require('../services/pumpDriver');
+var exec = require('child_process').exec;
 
 
 
@@ -81,6 +81,10 @@ var appRouter = function (app) {
   });
     res.status(200).send("Pumps are set.");
 
+  });
+
+  app.get("/shutdown", function(req, res) {
+    exec('shutdown now', function (error, stdout, stderr) { console.log(stdout); });
   });
 
 
