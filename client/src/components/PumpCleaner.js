@@ -12,8 +12,10 @@ function cleanPumps(){
 export default function PumpCleaner() {
 
     return(
+        <div className='AddButton'>
  <Button variant="contained" color="primary" onClick={cleanPumps}>
  Clean Pumps
 </Button>
+</div>
 );
 }

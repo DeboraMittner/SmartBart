@@ -58,8 +58,8 @@ handleBlur = () => {
   render(){
 
   return (
-    <div>
-      <Button className='AddButton' variant="contained" color="primary" onClick={this.handleClickOpen}>
+    <div className='AddButton' >
+      <Button  variant="contained" color="primary" onClick={this.handleClickOpen}>
        Add Cocktail <IoMdWine />
       </Button>
 

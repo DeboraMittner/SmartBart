@@ -11,8 +11,8 @@
     "name": "Long Island",
     "ingredients": {
         "gin": 50,
-        "Vodka": 50,
-        "Rum": 50,
+        "vodka": 50,
+        "rum": 50,
         "coke": 150
     }
 }, 
