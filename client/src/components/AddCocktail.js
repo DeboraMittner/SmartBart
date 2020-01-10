@@ -98,7 +98,7 @@ handleBlur = () => {
                   <Input
                     width="42"
                     value={this.value}
-                    margin="dense"
+                    marginTop="50px"
                     onChange={this.handleInputChange}
                     onBlur={this.handleBlur}
                     inputProps={{
