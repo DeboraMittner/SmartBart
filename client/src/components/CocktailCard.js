@@ -8,9 +8,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import OrderDialog from './OrderDialog';
 
-import Grid from '@material-ui/core/Grid';
-
-
 
 class CocktailCard extends Component {
  constructor(props){
@@ -24,8 +21,8 @@ class CocktailCard extends Component {
  }
  getIngredients() {
     if (this.props.content.ingredients) {
-        return Object.keys(this.props.content.ingredients).map((key) => {
-            return <p> {key} </p>;
+        return Object.keys(this.props.content.ingredients).map((ingredient) => {
+            return <Typography variant="body2" color="textSecondary" component="p" key={ingredient}> {ingredient} </Typography>;
         });
     } else {
         return <p>data is not available</p>;
@@ -86,9 +83,7 @@ closeDialog(){
             <Typography gutterBottom variant="h5" component="h2">
               {this.props.content.name}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
             {this.getIngredients()}
-            </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>

@@ -82,7 +82,7 @@ handleBlur = () => {
                
                 {this.state.pumps.map((pumpen, index) => {
                   return (
-                <FormGroup>
+                <FormGroup key={index}>
                   <FormControlLabel
                     control={
                       <Checkbox
