@@ -54,8 +54,13 @@ async function runPump(pump, duration) {
 
   if (process.env.NODE_ENV == 'production') {
     rpio.write(gpio, rpio.LOW);
-    rpio.sleep(duration);
-    rpio.write(gpio, rpio.HIGH);
+    //rpio.sleep(duration);
+
+    var stop = function () {
+      rpio.write(gpio, rpio.HIGH);
+    }
+    setTimeout(stop, duration * 1000);
+
   }
 }
 module.exports = { runPump };
