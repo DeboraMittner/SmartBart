@@ -10,6 +10,12 @@ import InputLabel from '@material-ui/core/InputLabel';
 import axios from "axios";
 import '../App.css';
 
+var apiURL = 'http://192.168.4.1:4000';
+
+if (process.env.NODE_ENV != 'production') {
+  apiURL = 'http://localhost:4000'
+}
+
 
 class AddCocktail extends Component {
   constructor(props) {
@@ -28,7 +34,7 @@ class AddCocktail extends Component {
   handleClickOpen = () => {
     this.setState({ open: true });
     axios
-      .get("http://localhost:4000/pumps")
+      .get(apiURL + "/pumps")
       .then(response => {
         var ingredients = {};
         response.data.forEach((pump) => {
@@ -48,7 +54,7 @@ class AddCocktail extends Component {
       "name": this.state.cocktailName,
       "ingredients": this.state.ingredients
     }
-    axios.post('http://localhost:4000/cocktail', {
+    axios.post(apiURL + '/cocktail', {
       cocktail: cocktail
     })
     .then(response => {

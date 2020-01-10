@@ -4,6 +4,12 @@ import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import "../App.css";
 
+var apiURL = 'http://192.168.4.1:4000';
+
+if (process.env.NODE_ENV != 'production') {
+  apiURL = 'http://localhost:4000'
+}
+
 class Cocktails extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +23,7 @@ class Cocktails extends Component {
 
   componentDidMount() {
     axios
-    .get("http://localhost:4000/cocktails")
+    .get(apiURL + "/cocktails")
     .then(response => {
       this.setState({cocktails: response.data});
     });

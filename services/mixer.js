@@ -1,4 +1,8 @@
-//var pumpDriver = require('./pumpDriver');
+
+if (process.env.NODE_ENV == 'production') {
+    var pumpDriver = require('./pumpDriver');
+}
+
 var cocktails = require('./cocktails.json');
 var pumps = require('./pump.json');
 const MAX_DRINK = 300;

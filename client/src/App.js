@@ -8,10 +8,16 @@ import AddCocktail from "./components/AddCocktail";
 import { Button } from "@material-ui/core";
 import axios from "axios";
 
+var apiURL = 'http://192.168.4.1:4000';
+
+if (process.env.NODE_ENV != 'production') {
+  apiURL = 'http://localhost:4000'
+}
+
 
 function shutdown() {
   axios
-    .get("http://localhost:4000/shutdown")
+    .get(apiURL + "/shutdown")
     .then(response => console.log(response));
 }
 
@@ -21,11 +27,13 @@ function App() {
       <Container maxWidth="sm">
         <Cocktails />
         <ChangePumpDialog />
-        <AddCocktail/>
+        <AddCocktail />
         <PumpCleaner />
-        <Button variant="contained" color="primary" onClick={() => shutdown}>
-          Change Pump Settings
+        <div className="AddButton">
+          <Button variant="contained" color="primary" onClick={() => shutdown}>
+            Shutdown
       </Button>
+        </div>
       </Container>
     </div>
   );

@@ -9,6 +9,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import axios from "axios";
 import '../App.css';
 
+var apiURL = 'http://192.168.4.1:4000';
+
+if (process.env.NODE_ENV != 'production') {
+  apiURL = 'http://localhost:4000'
+}
+
 
 
 class ChangePumpDialog extends Component {
@@ -29,7 +35,7 @@ class ChangePumpDialog extends Component {
   };
 
   save = () => {
-    axios.put('http://localhost:4000/pumps', {
+    axios.put(apiURL + '/pumps', {
       pumps: this.state.pumps
     })
       .then(response => {
@@ -63,7 +69,7 @@ class ChangePumpDialog extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:4000/pumps")
+      .get(apiURL + "/pumps")
       .then(response => {
         this.setState({ pumps: response.data });
         console.log(response);

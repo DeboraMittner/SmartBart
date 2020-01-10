@@ -7,6 +7,12 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 
+var apiURL = 'http://192.168.4.1:4000';
+
+if (process.env.NODE_ENV != 'production') {
+  apiURL = 'http://localhost:4000'
+}
+
 function sendRequest(ratio, id) {
   const params = {
     ratio: ratio,
@@ -14,7 +20,7 @@ function sendRequest(ratio, id) {
   };
   console.log(params);
   axios
-    .get("http://localhost:4000/cocktails/" + params.id, { params })
+    .get(apiURL + "/cocktails/" + params.id, { params })
     .then(response => console.log(response));
 }
 

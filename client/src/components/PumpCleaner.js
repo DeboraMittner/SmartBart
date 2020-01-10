@@ -2,9 +2,15 @@ import React from 'react';
 import Button from "@material-ui/core/Button";
 import axios from 'axios';
 
+var apiURL = 'http://192.168.4.1:4000';
+
+if (process.env.NODE_ENV != 'production') {
+  apiURL = 'http://localhost:4000'
+}
+
 function cleanPumps(){
     axios
-    .get('http://localhost:4000/cleanPumps')
+    .get(apiURL + '/cleanPumps')
     .then(response => console.log(response));
 
 }
