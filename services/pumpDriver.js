@@ -1,19 +1,20 @@
+const pump1GPIO = 37;
+const pump2GPIO = 35;
+const pump3GPIO = 33;
+const pump4GPIO = 31;
+const pump5GPIO = 29;
+const pump6GPIO = 32;
+
+
 if (process.env.NODE_ENV == 'production') {
   var rpio = require("rpio");
 
-  const pump1GPIO = 26;
-  const pump2GPIO = 19;
-  const pump3GPIO = 13;
-  const pump4GPIO = 6;
-  const pump5GPIO = 5;
-  const pump6GPIO = 12;
-
-  rpio.open(pump1GPIO, rpio.OUTPUT, rpio.LOW);
-  rpio.open(pump2GPIO, rpio.OUTPUT, rpio.LOW);
-  rpio.open(pump3GPIO, rpio.OUTPUT, rpio.LOW);
-  rpio.open(pump4GPIO, rpio.OUTPUT, rpio.LOW);
-  rpio.open(pump5GPIO, rpio.OUTPUT, rpio.LOW);
-  rpio.open(pump6GPIO, rpio.OUTPUT, rpio.LOW);
+  rpio.open(pump1GPIO, rpio.OUTPUT, rpio.HIGH);
+  rpio.open(pump2GPIO, rpio.OUTPUT, rpio.HIGH);
+  rpio.open(pump3GPIO, rpio.OUTPUT, rpio.HIGH);
+  rpio.open(pump4GPIO, rpio.OUTPUT, rpio.HIGH);
+  rpio.open(pump5GPIO, rpio.OUTPUT, rpio.HIGH);
+  rpio.open(pump6GPIO, rpio.OUTPUT, rpio.HIGH);
 }
 
 
@@ -51,9 +52,9 @@ function runPump(pump, duration) {
   }
 
   if (process.env.NODE_ENV == 'production') {
-    rpio.write(gpio, rpio.HIGH);
-    rpio.sleep(duration);
     rpio.write(gpio, rpio.LOW);
+    rpio.sleep(duration);
+    rpio.write(gpio, rpio.HIGH);
   }
 }
 module.exports = { runPump };
