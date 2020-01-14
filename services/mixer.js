@@ -23,7 +23,6 @@ function getPumps(cocktail){
             }
         
     }
-    console.log(pumpArray);
     return pumpArray;
 }
 
@@ -42,7 +41,10 @@ function calculateTime(intensity, pumps){
             else if(intensity == 3){
                 element[1] *= 1.2;
             }
-            totalalcohol += element[1]*VOLUME_TIME_RATIO;
+            totalalcohol += element[1];
+
+            element[1] = element[1] * VOLUME_TIME_RATIO;
+
             pumpTimeArray.push(element);
         }
     });
@@ -58,7 +60,7 @@ function calculateTime(intensity, pumps){
             else if(intensity == 3){
                 element[1] = element[1] - (difference * prozent);
             }
-            element[1] *=  VOLUME_TIME_RATIO;        
+            element[1] = element[1] * VOLUME_TIME_RATIO;
             pumpTimeArray.push(element);
         }
         
@@ -70,7 +72,7 @@ function calculateTime(intensity, pumps){
 function makeDrink(id, intensity){
     var cocktail = getCocktail(id);
     var pumps = getPumps(cocktail);
-    var time = calculateTime(intensity, pumps)
+    var time = calculateTime(intensity, pumps);
     console.log(time);
    time.forEach(async (element) => {
         pumpDriver.runPump(element[0].pump, element[1]);
