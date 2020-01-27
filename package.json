@@ -7,7 +7,8 @@
     "server": "node server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "NODE_ENV=production npm run server"
+    "start": "NODE_ENV=production npm run server",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,8 @@
     "concurrently": "^5.0.2",
     "cors": "^2.8.5",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "mocha": "^7.0.1"
   }
 }

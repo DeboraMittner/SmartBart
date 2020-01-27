@@ -6,6 +6,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import SaveIcon from '@material-ui/icons/Save';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import { withSnackbar } from 'notistack';
 import axios from "axios";
 import '../App.css';
 
@@ -38,9 +39,8 @@ class ChangePumpDialog extends Component {
     axios.put(apiURL + '/pumps', {
       pumps: this.state.pumps
     })
-      .then(response => {
-        console.log(response);
-      });
+      .then(response => this.props.enqueueSnackbar(response.data.msg, { variant: 'success' }))
+      .catch(error => this.props.enqueueSnackbar(error.response.data.msg, { variant: 'error' }));
     this.setState({ open: false });
   };
 
@@ -145,4 +145,4 @@ class ChangePumpDialog extends Component {
     );
   }
 }
-export default ChangePumpDialog;
+export default withSnackbar(ChangePumpDialog);

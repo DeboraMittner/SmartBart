@@ -79,4 +79,4 @@ function makeDrink(id, intensity){
     }); 
 }
 
-module.exports = {makeDrink};
+module.exports = {makeDrink, _calculateTime: calculateTime, _getPumps: getPumps, _getCocktail: getCocktail};

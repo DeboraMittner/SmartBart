@@ -1,5 +1,5 @@
 .App{
-    background-image: url(./testfiles/images/wave.svg);
+    background-image: url(./assets/wave.svg);
     background-size: contain;
     height: 100vh;
 }

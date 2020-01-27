@@ -20,7 +20,6 @@ if (process.env.NODE_ENV == 'production') {
 
 
 async function runPump(pump, duration) {
-  console.log('run');
   var gpio;
   switch (pump) {
     case 0: {
@@ -54,7 +53,6 @@ async function runPump(pump, duration) {
 
   if (process.env.NODE_ENV == 'production') {
     rpio.write(gpio, rpio.LOW);
-    //rpio.sleep(duration);
 
     var stop = function () {
       rpio.write(gpio, rpio.HIGH);

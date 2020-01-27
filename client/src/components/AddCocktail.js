@@ -7,6 +7,7 @@ import { FormLabel, FormControl } from "@material-ui/core";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import { withSnackbar } from 'notistack';
 import axios from "axios";
 import '../App.css';
 
@@ -40,13 +41,8 @@ class AddCocktail extends Component {
         response.data.forEach((pump) => {
           ingredients[pump.name] = 0;
         })
-        this.setState({ ingredients: ingredients }, function () {
-          Object.keys(this.state.ingredients).forEach(key => {
-            console.log(key);
-          })
-        });
-
-      });
+        this.setState({ ingredients: ingredients });
+      })
   };
 
   save = () => {
@@ -57,9 +53,8 @@ class AddCocktail extends Component {
     axios.post(apiURL + '/cocktail', {
       cocktail: cocktail
     })
-    .then(response => {
-      console.log(response);
-    });
+    .then(response => this.props.enqueueSnackbar(response.data.msg, { variant: 'success' }))
+    .catch(error => this.props.enqueueSnackbar(error.response.data.msg, { variant: 'error' }));
     this.setState({ open: false });
   };
 
@@ -151,4 +146,4 @@ class AddCocktail extends Component {
   }
 }
 
-export default AddCocktail;
+export default withSnackbar(AddCocktail);

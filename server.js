@@ -25,5 +25,5 @@ if(process.env.NODE_ENV === 'production') {
 const port = 4000;
 
 app.listen(port, function () {
-    console.log("app running on port." + port);
+    console.log("App running on Port: " + port);
 });

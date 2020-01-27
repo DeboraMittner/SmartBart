@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CocktailCard from "./CocktailCard";
 import Grid from "@material-ui/core/Grid";
+import { withSnackbar } from 'notistack';
 import axios from "axios";
 import "../App.css";
 
@@ -24,9 +25,8 @@ class Cocktails extends Component {
   componentDidMount() {
     axios
     .get(apiURL + "/cocktails")
-    .then(response => {
-      this.setState({cocktails: response.data});
-    });
+    .then(response => this.setState({cocktails: response.data}))
+    .catch(() => this.props.enqueueSnackbar('Could not connect to the SmartBart', { variant: 'error'}));
   }
 
   closeDialog() {
@@ -60,4 +60,4 @@ class Cocktails extends Component {
   }
 }
 
-export default Cocktails;
+export default withSnackbar(Cocktails);

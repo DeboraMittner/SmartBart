@@ -6,6 +6,7 @@ import ChangePumpDialog from "./components/ChangePumpDialog";
 import PumpCleaner from "./components/PumpCleaner";
 import AddCocktail from "./components/AddCocktail";
 import { Button } from "@material-ui/core";
+import { SnackbarProvider } from 'notistack';
 import axios from "axios";
 
 var apiURL = 'http://192.168.4.1:4000';
@@ -18,24 +19,30 @@ if (process.env.NODE_ENV != 'production') {
 function shutdown() {
   axios
     .get(apiURL + "/shutdown")
-    .then(response => console.log(response));
+    .then(response => console.log(response.data.msg))
+    .catch(error => console.log(error.response.data.msg));
 }
 
 function App() {
   return (
-    <div className="App">
-      <Container maxWidth="sm">
-        <Cocktails />
-        <ChangePumpDialog />
-        <AddCocktail />
-        <PumpCleaner />
-        <div className="AddButton">
-          <Button variant="contained" color="primary" onClick={() => shutdown}>
-            Shutdown
-      </Button>
-        </div>
-      </Container>
-    </div>
+    <SnackbarProvider maxSnack={3} anchorOrigin={{
+      vertical: 'top',
+      horizontal: 'center'
+    }}>
+      <div className="App">
+        <Container maxWidth="sm">
+          <Cocktails />
+          <ChangePumpDialog />
+          <AddCocktail />
+          <PumpCleaner />
+          <div className="AddButton">
+            <Button variant="contained" color="primary" onClick={() => shutdown}>
+              Shutdown
+        </Button>
+          </div>
+        </Container>
+      </div>
+    </SnackbarProvider>
   );
 }
 
