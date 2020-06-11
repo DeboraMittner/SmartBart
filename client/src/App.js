@@ -36,7 +36,7 @@ function App() {
           <AddCocktail />
           <PumpCleaner />
           <div className="AddButton">
-            <Button variant="contained" color="primary" onClick={() => shutdown}>
+            <Button variant="contained" color="primary" onClick={() => shutdown()}>
               Shutdown
         </Button>
           </div>
